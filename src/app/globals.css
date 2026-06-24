@@ -1,26 +1,257 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  --color-background: #121414;
+  --color-foreground: #e2e2e2;
+  --color-primary: #f2ca50;
+  --color-on-primary: #3c2f00;
+  --color-primary-container: #d4af37;
+  --color-on-primary-container: #554300;
+  --color-on-primary-fixed: #241a00;
+  --color-primary-fixed-dim: #e9c349;
+  --color-surface: #121414;
+  --color-surface-container-lowest: #0c0f0f;
+  --color-surface-container-low: #1a1c1c;
+  --color-surface-variant: #333535;
+  --color-on-surface-variant: #d0c5af;
+  --color-on-surface: #e2e2e2;
+  --color-border: #262626;
+  --color-outline-variant: #4d4635;
+  
+  /* Pune Voices variables */
+  --color-auric-gold: #D4AF37;
+  --color-obsidian-base: #0B0B0B;
+  --color-glass-border: rgba(212, 175, 55, 0.25);
+  --color-muted-text: #888888;
+  
+  --font-sans: var(--font-hanken);
+  --font-serif: var(--font-playfair);
+  --font-label-caps: var(--font-hanken);
+  --font-headline-md: var(--font-playfair);
+  --font-display-lg: var(--font-playfair);
+  --font-headline-lg: var(--font-playfair);
+  --font-body-lg: var(--font-hanken);
+  --font-body-md: var(--font-hanken);
+  --font-metric-value: var(--font-hanken);
+  --font-display-xl-mobile: var(--font-playfair);
+  --font-display-xl: var(--font-playfair);
+  --font-headline-lg-mobile: var(--font-playfair);
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --text-label-caps: 12px;
+  --text-label-caps--line-height: 16px;
+  --text-label-caps--letter-spacing: 0.15em;
+  --text-label-caps--font-weight: 700;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --text-headline-md: 32px;
+  --text-headline-md--line-height: 40px;
+  --text-headline-md--font-weight: 600;
+
+  --text-display-lg: 72px;
+  --text-display-lg--line-height: 80px;
+  --text-display-lg--letter-spacing: -0.02em;
+  --text-display-lg--font-weight: 700;
+
+  --text-headline-lg: 48px;
+  --text-headline-lg--line-height: 56px;
+  --text-headline-lg--font-weight: 600;
+
+  --text-body-lg: 20px;
+  --text-body-lg--line-height: 32px;
+  --text-body-lg--font-weight: 400;
+
+  --text-body-md: 16px;
+  --text-body-md--line-height: 26px;
+  --text-body-md--font-weight: 400;
+  
+  --text-display-xl-mobile: 64px;
+  --text-display-xl-mobile--line-height: 110%;
+  --text-display-xl-mobile--font-weight: 700;
+  
+  --text-display-xl: 120px;
+  --text-display-xl--line-height: 110%;
+  --text-display-xl--letter-spacing: -0.03em;
+  --text-display-xl--font-weight: 700;
+  
+  --text-headline-lg-mobile: 40px;
+  --text-headline-lg-mobile--line-height: 120%;
+  --text-headline-lg-mobile--font-weight: 400;
+  
+  --text-metric-value: 48px;
+  --text-metric-value--line-height: 100%;
+  --text-metric-value--letter-spacing: -0.02em;
+  --text-metric-value--font-weight: 200;
+
+  --spacing-container-max: 1440px;
+  --spacing-gutter: 32px;
+  --spacing-margin-desktop: 80px;
+  --spacing-margin-mobile: 24px;
+  
+  --spacing-section-gap: 160px;
+  --spacing-content-max-width: 1280px;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Material Icons */
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Luxury Card & Border */
+.luxury-border {
+    border: 1px solid var(--color-border);
+}
+.luxury-card:hover {
+    border-color: var(--color-primary-container);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #0A0A0A; }
+::-webkit-scrollbar-thumb { background: #D4AF37; }
+
+/* Navigation Sticker Styles */
+.nav-sticker {
+    position: absolute;
+    top: -45px;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px) scale(0.8);
+    width: 40px;
+    height: 40px;
+    opacity: 0;
+    transition: all 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+    pointer-events: none;
+}
+
+.nav-link-wrapper:hover .nav-sticker {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+    animation: float 3s ease-in-out infinite;
+}
+
+.nav-link-wrapper.active a {
+    color: var(--color-primary); /* primary color */
+    position: relative;
+}
+
+.nav-link-wrapper.active a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-primary);
+}
+
+@keyframes float {
+    0%, 100% { transform: translateX(-50%) translateY(0) scale(1); }
+    50% { transform: translateX(-50%) translateY(-6px) scale(1.05); }
+}
+
+@layer utilities {
+  .border-sharp {
+    border-radius: 0;
+  }
+}
+
+/* Animations from About Page */
+.reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+.reveal.active { opacity: 1; transform: translateY(0); }
+.text-mask { overflow: hidden; }
+.reveal-text { display: block; transform: translateY(110%); transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+.active .reveal-text { transform: translateY(0); }
+
+.gold-glow:hover { box-shadow: 0 0 40px rgba(212, 175, 55, 0.15); border-color: var(--color-primary); }
+.floating-vertical { animation: float-vertical 6s ease-in-out infinite; }
+
+@keyframes float-vertical {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.scroll-line { 
+    position: absolute; 
+    bottom: 0; 
+    left: 50%; 
+    height: 80px; 
+    width: 1px; 
+    background: var(--color-primary); 
+    transform-origin: top; 
+    animation: scroll-line 2s infinite ease-in-out; 
+}
+
+@keyframes scroll-line {
+    0% { transform: scaleY(0); opacity: 0; }
+    50% { transform: scaleY(1); opacity: 1; }
+    100% { transform: scaleY(0); opacity: 0; transform-origin: bottom; }
+}
+
+/* Pune Voices specific styles */
+.glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-card:hover {
+    border-color: rgba(212, 175, 55, 0.6);
+    box-shadow: 0 0 40px rgba(212, 175, 55, 0.08);
+    transform: translateY(-8px);
+}
+.reveal-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-active {
+    opacity: 1;
+    transform: translateY(0);
+}
+.gold-line-draw {
+    width: 0;
+    height: 1px;
+    background: #D4AF37;
+    transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-active .gold-line-draw {
+    width: 100%;
+}
+.parallax-container {
+    perspective: 1000px;
+}
+.hero-glow {
+    background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+}
+.btn-gold {
+    background: #D4AF37;
+    color: #0B0B0B;
+    font-family: var(--font-label-caps), sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    transition: all 0.3s ease;
+}
+.btn-gold:hover {
+    background: #f2ca50;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+}
+.btn-outline {
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    color: #D4AF37;
+    font-family: var(--font-label-caps), sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    transition: all 0.3s ease;
+}
+.btn-outline:hover {
+    border-color: #D4AF37;
+    background: rgba(212, 175, 55, 0.05);
+    transform: translateY(-2px);
 }
