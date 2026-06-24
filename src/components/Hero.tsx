@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
+import Link from "next/link";
 
 export function Hero() {
   const container: Variants = {
@@ -35,12 +36,12 @@ export function Hero() {
             Premium digital marketing for brands that refuse to be ordinary. We specialize in aggressive growth strategies for luxury and enterprise markets.
         </motion.p>
         <motion.div variants={item} className="flex flex-col sm:flex-row items-center justify-center gap-6">
-          <button className="w-full sm:w-auto bg-[var(--color-primary)] text-[var(--color-on-primary-fixed)] font-sans text-[12px] py-5 px-12 font-bold uppercase tracking-[0.15em] hover:bg-[var(--color-primary-fixed-dim)] transition-all duration-300">
+          <Link href="/case-studies" className="inline-block w-full sm:w-auto bg-[var(--color-primary)] text-[var(--color-on-primary-fixed)] font-sans text-[12px] py-5 px-12 font-bold uppercase tracking-[0.15em] hover:bg-[var(--color-primary-fixed-dim)] transition-all duration-300 text-center">
               SEE OUR WORK
-          </button>
-          <button className="w-full sm:w-auto bg-transparent border border-[var(--color-primary)] text-[var(--color-primary)] font-sans text-[12px] py-5 px-12 font-bold uppercase tracking-[0.15em] hover:bg-[var(--color-primary)]/10 transition-all duration-300">
+          </Link>
+          <Link href="/contact" className="inline-block w-full sm:w-auto bg-transparent border border-[var(--color-primary)] text-[var(--color-primary)] font-sans text-[12px] py-5 px-12 font-bold uppercase tracking-[0.15em] hover:bg-[var(--color-primary)]/10 transition-all duration-300 text-center">
               BOOK STRATEGY CALL
-          </button>
+          </Link>
         </motion.div>
       </motion.div>
     </section>
