@@ -20,8 +20,6 @@ function useIntelligentDisplay() {
   const [appearanceType, setAppearanceType] = useState<AppearanceType>(1);
   const [isMobile, setIsMobile] = useState(false);
   const pathname = usePathname();
-  const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
-  const isScrolling = useRef(false);
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -34,76 +32,39 @@ function useIntelligentDisplay() {
 
   useEffect(() => {
     if (!isClient) return;
-    // If we're on a case study page, never trigger
     if (pathname.includes('/case-studies/')) return;
 
-    const checkAndTrigger = () => {
-      if (isOpen) return;
+    // Trigger: 1.5s after landing on any page
+    const navTimer = setTimeout(() => {
+      setIsOpen((currentIsOpen) => {
+        if (currentIsOpen) return true;
 
-      // Limits
-      const countStr = sessionStorage.getItem("purnova_popup_count");
-      const count = countStr ? parseInt(countStr) : 0;
-      const limit = isMobile ? MAX_MOBILE : MAX_DESKTOP;
-      if (count >= limit) return;
+        // Use a new storage key v2 to ensure it resets for testing
+        if (sessionStorage.getItem(`purnova_popup_v2_${pathname}`)) return false;
 
-      // Cooldown
-      const lastClosedStr = sessionStorage.getItem("purnova_popup_last_closed");
-      if (lastClosedStr) {
-        const lastClosed = parseInt(lastClosedStr);
-        if (Date.now() - lastClosed < COOLDOWN_MS) return;
-      }
+        // Blockers
+        const activeTag = document.activeElement?.tagName;
+        if (activeTag === "INPUT" || activeTag === "TEXTAREA" || activeTag === "SELECT") return false;
 
-      // Blockers
-      if (isScrolling.current) return;
-      const activeTag = document.activeElement?.tagName;
-      if (activeTag === "INPUT" || activeTag === "TEXTAREA" || activeTag === "SELECT") return;
+        // Trigger
+        sessionStorage.setItem(`purnova_popup_v2_${pathname}`, "true");
+        
+        const countStr = sessionStorage.getItem("purnova_popup_count");
+        const currentCount = countStr ? parseInt(countStr) : 0;
+        const newCount = currentCount + 1;
+        sessionStorage.setItem("purnova_popup_count", newCount.toString());
 
-      // Trigger
-      const newCount = count + 1;
-      sessionStorage.setItem("purnova_popup_count", newCount.toString());
+        const type = ((newCount - 1) % 3 + 1) as AppearanceType;
+        setAppearanceType(type);
+        
+        return true;
+      });
+    }, 1500);
 
-      const type = ((newCount - 1) % 3 + 1) as AppearanceType;
-      setAppearanceType(type);
-      setIsOpen(true);
-    };
-
-    // Trigger 1: 30s timer
-    const timer = setTimeout(checkAndTrigger, WAIT_TIME_MS);
-
-    // Trigger 2: 50% scroll
-    const handleScroll = () => {
-      isScrolling.current = true;
-      if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
-
-      scrollTimeout.current = setTimeout(() => {
-        isScrolling.current = false;
-        const scrolled = window.scrollY;
-        const total = document.body.scrollHeight - window.innerHeight;
-        if (total > 0 && scrolled / total > 0.5) {
-          checkAndTrigger();
-        }
-      }, 500);
-    };
-    window.addEventListener("scroll", handleScroll);
-
-    // Trigger 3: Exit intent
-    const handleMouseOut = (e: MouseEvent) => {
-      if (e.clientY < 10) {
-        checkAndTrigger();
-      }
-    };
-    document.addEventListener("mouseout", handleMouseOut);
-
-    return () => {
-      clearTimeout(timer);
-      if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
-      window.removeEventListener("scroll", handleScroll);
-      document.removeEventListener("mouseout", handleMouseOut);
-    };
-  }, [pathname, isOpen, isMobile, isClient]);
+    return () => clearTimeout(navTimer);
+  }, [pathname, isClient]);
 
   const closePopup = () => {
-    sessionStorage.setItem("purnova_popup_last_closed", Date.now().toString());
     setIsOpen(false);
   };
 
