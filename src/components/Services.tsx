@@ -25,7 +25,7 @@ const services = [
   },
   {
     title: "Paid Ads",
-    description: "High-stakes advertising management across Meta, Google, and TikTok with a focus on conversion and scale.",
+    description: "High-stakes advertising management across Meta  and Google with a focus on conversion and scale.",
     icon: "ads_click",
   },
   {
@@ -45,7 +45,7 @@ export function Services() {
         </div>
         <div className="pb-2">
           <Link href="/services" className="group flex items-center gap-4 font-sans text-[12px] font-bold uppercase tracking-[0.15em] text-[var(--color-on-surface)] hover:text-[var(--color-primary)] transition-colors duration-300">
-            Learn More 
+            Learn More
             <span className="material-symbols-outlined text-sm group-hover:translate-x-2 transition-transform duration-300">arrow_forward</span>
           </Link>
         </div>
@@ -56,7 +56,7 @@ export function Services() {
             <span className="material-symbols-outlined text-[var(--color-primary)] text-3xl md:text-4xl mb-4 md:mb-6">{service.icon}</span>
             <h3 className="font-serif text-[22px] md:text-[26px] font-semibold mb-3 md:mb-4 leading-tight">{service.title}</h3>
             <p className="text-[var(--color-on-surface-variant)] font-sans text-[14px] leading-[22px] md:leading-[24px] mb-auto">
-                {service.description}
+              {service.description}
             </p>
           </div>
         ))}

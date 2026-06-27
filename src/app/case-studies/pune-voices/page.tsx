@@ -251,7 +251,7 @@ export default function PuneVoicesCaseStudy() {
           <h2 className="font-serif text-[36px] md:text-[64px] leading-[1.1] text-white mb-10 md:mb-16">
             Ready To Build Your Next Growth Story?
           </h2>
-          <Link href="mailto:hello@purnova.com">
+          <Link href="/contact">
             <button className="bg-[#D4AF37] text-black font-sans text-[12px] md:text-[14px] font-bold uppercase tracking-[0.2em] px-8 md:px-12 py-4 md:py-5 rounded-[16px] shadow-[0_0_30px_rgba(212,175,55,0.4)] hover:scale-105 transition-transform active:scale-95">
               Book A Call
             </button>

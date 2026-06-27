@@ -12,22 +12,24 @@ import { Footer } from "@/components/Footer";
 type TileType = "A" | "B" | "C";
 
 const clients = [
+  // Brands with Logos
+  { name: "Bushare", handle: "@buybushare", instagramUrl: "https://www.instagram.com/buybushare/?hl=en", category: "Technology", type: "B" as TileType, featured: true, logo: "/brand-logos/bushare.png" },
+  { name: "Upscale", handle: "@salmanshaikh_upscale", instagramUrl: "https://www.instagram.com/salmanshaikh_upscale/?hl=en", category: "Media", type: "A" as TileType, featured: true, logo: "/brand-logos/Upscale.png" },
+  { name: "DR Auto", handle: "@_the_dr_auto__", instagramUrl: "https://www.instagram.com/_the_dr_auto__/?hl=en", category: "Automotive", type: "B" as TileType, featured: true, logo: "/brand-logos/Dr-auto.png" },
+  { name: "Cosmic Ganges", handle: "@cosmicganges", instagramUrl: "https://www.instagram.com/cosmicganges/?hl=en", category: "Technology", type: "C" as TileType, featured: true, logo: "/brand-logos/Cosmic.png" },
+  { name: "Eat Right Up", handle: "@eatrightup", instagramUrl: "https://www.instagram.com/eatrightup/?hl=en", category: "Food & Beverage", type: "C" as TileType, featured: false, logo: "/brand-logos/Eat Right Up Logo.png" },
+  { name: "Delight Events", handle: "@delight_event_decor", instagramUrl: "https://www.instagram.com/delight_event_decor/?hl=en", category: "Events", type: "B" as TileType, featured: false, logo: "/brand-logos/delight-events.png" },
+  { name: "Vaichal Group", handle: "@vaichalgroup", instagramUrl: "https://www.instagram.com/vaichalgroup/?hl=en", category: "Real Estate", type: "A" as TileType, featured: false, logo: "/brand-logos/vaichal-group (1).png" },
+  { name: "Sadgee Masale", handle: "@sadgee_masale", instagramUrl: "https://www.instagram.com/sadgee_masale/?hl=en", category: "Food & Beverage", type: "A" as TileType, featured: false, logo: "/brand-logos/sadgee.png" },
+  { name: "Hotel Wada", handle: "@hotelwada", instagramUrl: "https://www.instagram.com/hotelwada/?hl=en", category: "Hospitality", type: "A" as TileType, featured: false, logo: "/brand-logos/Hotel-wada.png" },
+  // Brands without Logos
   { name: "Pune Voices", handle: "@punevoices", instagramUrl: "https://www.instagram.com/punevoices/?hl=en", category: "Media", type: "A" as TileType, featured: true },
-  { name: "Bushare", handle: "@buybushare", instagramUrl: "https://www.instagram.com/buybushare/?hl=en", category: "Technology", type: "B" as TileType, featured: true },
-  { name: "Upscale", handle: "@salmanshaikh_upscale", instagramUrl: "https://www.instagram.com/salmanshaikh_upscale/?hl=en", category: "Media", type: "A" as TileType, featured: true },
-  { name: "DR Auto", handle: "@_the_dr_auto__", instagramUrl: "https://www.instagram.com/_the_dr_auto__/?hl=en", category: "Automotive", type: "B" as TileType, featured: true },
-  { name: "Cosmic Ganges", handle: "@cosmicganges", instagramUrl: "https://www.instagram.com/cosmicganges/?hl=en", category: "Technology", type: "C" as TileType, featured: true },
   { name: "Import Export", handle: "@import.export.federation", instagramUrl: "https://www.instagram.com/import.export.federation/?hl=en", category: "Education", type: "A" as TileType, featured: false },
   { name: "Shri Samarth", handle: "@shrisamarthakrupa", instagramUrl: "https://www.instagram.com/shrisamarthakrupa/?hl=en", category: "Food & Beverage", type: "B" as TileType, featured: false },
-  { name: "Eat Right Up", handle: "@eatrightup", instagramUrl: "https://www.instagram.com/eatrightup/?hl=en", category: "Food & Beverage", type: "C" as TileType, featured: false },
-  { name: "Delight Events", handle: "@delight_event_decor", instagramUrl: "https://www.instagram.com/delight_event_decor/?hl=en", category: "Events", type: "B" as TileType, featured: false },
-  { name: "Vaichal Group", handle: "@vaichalgroup", instagramUrl: "https://www.instagram.com/vaichalgroup/?hl=en", category: "Real Estate", type: "A" as TileType, featured: false },
   { name: "Aashi Skool", handle: "@aashiforestskool", instagramUrl: "https://www.instagram.com/aashiforestskool/?hl=en", category: "Education", type: "C" as TileType, featured: false },
   { name: "Siraa", handle: "@houseofsiraa", instagramUrl: "https://www.instagram.com/houseofsiraa/?hl=en", category: "Fashion", type: "B" as TileType, featured: false },
-  { name: "Sadgee Masale", handle: "@sadgee_masale", instagramUrl: "https://www.instagram.com/sadgee_masale/?hl=en", category: "Food & Beverage", type: "A" as TileType, featured: false },
   { name: "Savaniee", handle: "@savanieeravindrra", instagramUrl: "https://www.instagram.com/savanieeravindrra/?hl=en", category: "Personal Brands", type: "C" as TileType, featured: false },
   { name: "Sonalee K", handle: "@sonalee18588", instagramUrl: "https://www.instagram.com/sonalee18588/?hl=en", category: "Personal Brands", type: "C" as TileType, featured: false },
-  { name: "Hotel Wada", handle: "@hotelwada", instagramUrl: "https://www.instagram.com/hotelwada/?hl=en", category: "Hospitality", type: "A" as TileType, featured: false },
   { name: "Glamowell", handle: "@glamowellofficial", instagramUrl: "https://www.instagram.com/glamowellofficial/?hl=en", category: "Fashion", type: "B" as TileType, featured: false },
   { name: "Varad Vinayak", handle: "@varadvinayak", instagramUrl: "#", category: "Real Estate", type: "B" as TileType, featured: false },
   { name: "Akshay Catering", handle: "@caterersakshay", instagramUrl: "https://www.instagram.com/caterersakshay?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==", category: "Food & Beverage", type: "C" as TileType, featured: false },
@@ -109,13 +111,31 @@ function DesktopClients() {
 
       {/* 3. MASONRY GALLERY */}
       <section className="relative w-full max-w-[1600px] mx-auto px-[40px] md:px-[80px] pb-32 min-h-[800px]">
-        <motion.div layout className="columns-1 md:columns-2 lg:columns-3 gap-8">
-          <AnimatePresence>
-            {filteredClients.map((client) => (
-              <MasonryTile key={client.name} client={client} />
-            ))}
-          </AnimatePresence>
-        </motion.div>
+        {/* Large screens: 3 columns */}
+        <div className="hidden lg:flex gap-8">
+           {[0, 1, 2].map(colIndex => (
+             <div key={colIndex} className="flex-1 flex flex-col gap-8">
+               <AnimatePresence>
+                 {filteredClients.filter((_, i) => i % 3 === colIndex).map((client) => (
+                   <MasonryTile key={client.name} client={client} />
+                 ))}
+               </AnimatePresence>
+             </div>
+           ))}
+        </div>
+        
+        {/* Medium screens: 2 columns */}
+        <div className="hidden md:flex lg:hidden gap-8">
+           {[0, 1].map(colIndex => (
+             <div key={colIndex} className="flex-1 flex flex-col gap-8">
+               <AnimatePresence>
+                 {filteredClients.filter((_, i) => i % 2 === colIndex).map((client) => (
+                   <MasonryTile key={client.name} client={client} />
+                 ))}
+               </AnimatePresence>
+             </div>
+           ))}
+        </div>
       </section>
 
       {/* 4. SOCIAL PROOF STRIP */}
@@ -157,7 +177,7 @@ function DesktopClients() {
           <p className="font-sans text-[20px] md:text-[24px] text-white/40 italic mb-16">
             The strongest brands grow together.
           </p>
-          <Link href="mailto:hello@purnova.com">
+          <Link href="/contact">
             <button className="group relative bg-transparent border-2 border-[#D4AF37] text-[#D4AF37] font-sans text-[16px] font-bold uppercase tracking-[0.2em] px-16 h-[72px] rounded-full overflow-hidden transition-colors hover:bg-[#D4AF37] hover:text-black">
               <span className="relative z-10">Start The Conversation</span>
             </button>
@@ -232,7 +252,7 @@ function MasonryTile({ client }: { client: any }) {
       exit={{ opacity: 0, scale: 0.9 }}
       transition={{ duration: 0.5 }}
       onClick={() => setExpanded(!expanded)}
-      className="mb-8 break-inside-avoid relative overflow-hidden bg-[#111] rounded-[24px] cursor-pointer group hover:-translate-y-2 transition-transform duration-500 border border-transparent hover:border-[#D4AF37]/50 hover:shadow-[0_20px_40px_rgba(212,175,55,0.1)]"
+      className="relative overflow-hidden bg-[#111] rounded-[24px] cursor-pointer group hover:-translate-y-2 transition-transform duration-500 border border-transparent hover:border-[#D4AF37]/50 hover:shadow-[0_20px_40px_rgba(212,175,55,0.1)]"
     >
       {/* TILE FRONT */}
       <motion.div layout className={`relative w-full ${getHeight()} flex flex-col justify-between p-8`}>
@@ -249,6 +269,12 @@ function MasonryTile({ client }: { client: any }) {
         {client.type === 'C' && (
            <div className="absolute inset-0 flex items-center justify-center opacity-10">
              <div className="w-[150px] h-[150px] rounded-full border border-white"></div>
+           </div>
+        )}
+
+        {client.logo && (
+           <div className="absolute inset-0 z-0 flex items-center justify-center p-12 pointer-events-none opacity-10 group-hover:opacity-60 transition-opacity duration-700">
+              <img src={client.logo} alt={`${client.name} logo`} className="w-full h-full object-contain" />
            </div>
         )}
 
@@ -283,7 +309,9 @@ function MasonryTile({ client }: { client: any }) {
           >
             <div className="p-8">
               <div className="flex items-center gap-4 mb-8">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#D4AF37] to-transparent"></div>
+                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#D4AF37] to-transparent flex items-center justify-center">
+                   <span className="font-serif text-[18px] text-white">{client.name.charAt(0)}</span>
+                 </div>
                 <div>
                   <p className="font-serif text-[18px] text-white leading-tight">{client.name}</p>
                   <p className="font-sans text-[12px] text-white/50">{client.category}</p>
@@ -392,6 +420,12 @@ function MobileClients() {
               {/* Image Placeholder */}
               <div className="absolute inset-0 bg-gradient-to-br from-[#1A1A1A] to-[#0A0A0A]"></div>
               
+              {client.logo && (
+                 <div className="absolute inset-0 z-10 flex items-center justify-center p-12 pointer-events-none opacity-10 active:opacity-60 transition-opacity duration-500">
+                    <img src={client.logo} alt={`${client.name} logo`} className="w-full h-full object-contain" />
+                 </div>
+              )}
+
               <div className="relative z-20 flex justify-between items-end">
                 <div>
                   <h3 className="font-serif text-[32px] text-white leading-none mb-2">{client.name}</h3>
@@ -429,7 +463,9 @@ function MobileClients() {
               </div>
               <div className="p-6">
                 <div className="flex items-center gap-4 mb-8">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#D4AF37] to-transparent"></div>
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#D4AF37] to-transparent flex items-center justify-center">
+                    <span className="font-serif text-[24px] text-white">{expandedClient.name.charAt(0)}</span>
+                  </div>
                   <div>
                     <h3 className="font-serif text-[28px] text-white leading-none mb-1">{expandedClient.name}</h3>
                     <p className="font-sans text-[12px] uppercase tracking-widest text-[#D4AF37]">{expandedClient.handle}</p>
@@ -462,7 +498,7 @@ function MobileClients() {
         <h2 className="font-serif text-[40px] leading-[1.1] text-white mb-6">
           Your Brand Could <br/>Be Next.
         </h2>
-        <Link href="mailto:hello@purnova.com">
+        <Link href="/contact">
           <button className="w-full bg-transparent border-2 border-[#D4AF37] text-[#D4AF37] font-sans text-[14px] font-bold uppercase tracking-[0.2em] py-5 rounded-full mt-6 active:bg-[#D4AF37] active:text-black transition-colors">
             Start The Conversation
           </button>
