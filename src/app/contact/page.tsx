@@ -6,6 +6,40 @@ import { Footer } from "@/components/Footer";
 import { LogoBanner } from "@/components/LogoBanner";
 
 export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    requirements: "",
+    message: "",
+    source: ""
+  });
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("loading");
+    
+    try {
+      await fetch("https://script.google.com/macros/s/AKfycbyQ6rBgMztDLsM8t44iE6KzT4JHD9q0Gnlvq4iGD4X9_pmsiOPXsbz3JzFVjADoHdJS/exec", {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+        body: JSON.stringify(formData),
+      });
+      setStatus("success");
+      setFormData({ name: "", email: "", phone: "", company: "", requirements: "", message: "", source: "" });
+      
+      setTimeout(() => setStatus("idle"), 5000);
+    } catch (err) {
+      console.error(err);
+      setStatus("error");
+    }
+  };
+
   return (
     <main className="bg-[#0B0B0B] text-white min-h-screen selection:bg-[#D4AF37] selection:text-black">
       <NavBar />
@@ -26,22 +60,23 @@ export default function ContactPage() {
 
         {/* Right Col: Form */}
         <div className="flex-1">
-          <form className="flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
+          <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
             
             <div className="flex flex-col md:flex-row gap-6">
               <input 
                 type="text" 
                 placeholder="Full Name" 
                 required
-                pattern="[A-Za-z\s\-]+"
-                title="Only letters, spaces, and hyphens allowed"
-                onInput={(e) => { e.currentTarget.value = e.currentTarget.value.replace(/[0-9]/g, ''); }}
+                value={formData.name}
+                onChange={(e) => setFormData({...formData, name: e.target.value.replace(/[0-9]/g, '')})}
                 className="w-full bg-[#111] border border-white/10 rounded-[12px] px-6 py-4 font-sans text-[14px] text-white placeholder-white/40 focus:outline-none focus:border-[#D4AF37]/50 focus:bg-[#151515] transition-colors" 
               />
               <input 
                 type="email" 
                 placeholder="Email" 
                 required
+                value={formData.email}
+                onChange={(e) => setFormData({...formData, email: e.target.value})}
                 className="w-full bg-[#111] border border-white/10 rounded-[12px] px-6 py-4 font-sans text-[14px] text-white placeholder-white/40 focus:outline-none focus:border-[#D4AF37]/50 focus:bg-[#151515] transition-colors" 
               />
             </div>
@@ -51,21 +86,27 @@ export default function ContactPage() {
                 type="tel" 
                 placeholder="Phone Number" 
                 required
-                pattern="[0-9]+"
-                title="Only digits allowed"
-                onInput={(e) => { e.currentTarget.value = e.currentTarget.value.replace(/[^0-9]/g, ''); }}
+                value={formData.phone}
+                onChange={(e) => setFormData({...formData, phone: e.target.value.replace(/[^0-9]/g, '')})}
                 className="w-full bg-[#111] border border-white/10 rounded-[12px] px-6 py-4 font-sans text-[14px] text-white placeholder-white/40 focus:outline-none focus:border-[#D4AF37]/50 focus:bg-[#151515] transition-colors" 
               />
               <input 
                 type="text" 
                 placeholder="Company Name" 
                 required
+                value={formData.company}
+                onChange={(e) => setFormData({...formData, company: e.target.value})}
                 className="w-full bg-[#111] border border-white/10 rounded-[12px] px-6 py-4 font-sans text-[14px] text-white placeholder-white/40 focus:outline-none focus:border-[#D4AF37]/50 focus:bg-[#151515] transition-colors" 
               />
             </div>
 
             <div className="relative">
-              <select defaultValue="" className="w-full bg-[#111] border border-white/10 rounded-[12px] px-6 py-4 font-sans text-[14px] text-white/40 focus:text-white focus:outline-none focus:border-[#D4AF37]/50 focus:bg-[#151515] transition-colors appearance-none cursor-pointer">
+              <select 
+                value={formData.requirements}
+                onChange={(e) => setFormData({...formData, requirements: e.target.value})}
+                required
+                className="w-full bg-[#111] border border-white/10 rounded-[12px] px-6 py-4 font-sans text-[14px] text-white/40 focus:text-white focus:outline-none focus:border-[#D4AF37]/50 focus:bg-[#151515] transition-colors appearance-none cursor-pointer"
+              >
                 <option value="" disabled>Select Your Requirements</option>
                 <option value="branding">Branding & Identity</option>
                 <option value="digital">Digital Marketing</option>
@@ -76,16 +117,22 @@ export default function ContactPage() {
               <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-white/40 material-symbols-outlined text-[20px]">expand_more</div>
             </div>
 
-
-
             <textarea 
               rows={4} 
               placeholder="Let us know about your project!" 
+              value={formData.message}
+              onChange={(e) => setFormData({...formData, message: e.target.value})}
+              required
               className="w-full bg-[#111] border border-white/10 rounded-[12px] px-6 py-4 font-sans text-[14px] text-white placeholder-white/40 focus:outline-none focus:border-[#D4AF37]/50 focus:bg-[#151515] transition-colors resize-none" 
             />
 
             <div className="relative">
-              <select defaultValue="" className="w-full bg-[#111] border border-white/10 rounded-[12px] px-6 py-4 font-sans text-[14px] text-white/40 focus:text-white focus:outline-none focus:border-[#D4AF37]/50 focus:bg-[#151515] transition-colors appearance-none cursor-pointer">
+              <select 
+                value={formData.source}
+                onChange={(e) => setFormData({...formData, source: e.target.value})}
+                required
+                className="w-full bg-[#111] border border-white/10 rounded-[12px] px-6 py-4 font-sans text-[14px] text-white/40 focus:text-white focus:outline-none focus:border-[#D4AF37]/50 focus:bg-[#151515] transition-colors appearance-none cursor-pointer"
+              >
                 <option value="" disabled>How did you hear about us?</option>
                 <option value="google">Google</option>
                 <option value="linkedin">LinkedIn</option>
@@ -96,8 +143,10 @@ export default function ContactPage() {
             </div>
 
             <div>
-              <button type="submit" className="bg-white text-black font-sans text-[14px] font-bold uppercase tracking-[0.1em] px-8 py-4 rounded-full hover:bg-[#D4AF37] hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] transition-all duration-300 flex items-center gap-2">
-                Submit Form <span className="material-symbols-outlined text-[18px]">arrow_outward</span>
+              <button disabled={status === "loading"} type="submit" className="w-full md:w-auto disabled:opacity-50 disabled:cursor-not-allowed bg-white text-black font-sans text-[14px] font-bold uppercase tracking-[0.1em] px-8 py-4 rounded-full hover:bg-[#D4AF37] hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] transition-all duration-300 flex items-center justify-center gap-2">
+                {status === "loading" ? "Submitting..." : status === "success" ? "Message Sent!" : status === "error" ? "Error! Try Again" : "Submit Form"} 
+                {status === "idle" && <span className="material-symbols-outlined text-[18px]">arrow_outward</span>}
+                {status === "success" && <span className="material-symbols-outlined text-[18px]">check_circle</span>}
               </button>
             </div>
           </form>

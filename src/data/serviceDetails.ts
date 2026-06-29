@@ -29,19 +29,44 @@ export const serviceDetails: Record<string, any> = {
     philosophy: "A brand is the emotional tax people are willing to pay for your product. We architect luxury-grade brand identities that command attention, build irrational loyalty, and create insurmountable moats against your competitors.",
     features: [
       {
-        title: "Core Positioning",
-        manifesto: "Find your monopoly.",
-        description: "We analyze the market landscape to identify uncontested spaces. By establishing a unique and defensible positioning strategy, we ensure your brand stands alone rather than blending into the noise."
+        title: "Brand Positioning",
+        manifesto: "Define what makes you truly unforgettable.",
+        description: "We architect your unique market position, identifying uncontested spaces where your brand doesn't just compete, but dictates the rules of the category."
       },
       {
-        title: "Visual Identity",
-        manifesto: "Aesthetics that command authority.",
-        description: "From typography to color theory, we craft visual systems that exude premium quality. Every asset we design is engineered to communicate luxury, trust, and undeniable market leadership."
+        title: "Audience Research",
+        manifesto: "Understand behavior before you influence it.",
+        description: "We dive deep into the psychology of your ideal customers. By mapping their desires, friction points, and market behavior, we ensure your brand speaks directly to their core needs."
       },
       {
-        title: "Go-to-Market Strategy",
-        manifesto: "Launch with impact.",
-        description: "We design comprehensive rollout plans that generate immediate traction. Our go-to-market strategies ensure that when you launch a new product or rebrand, the market pays absolute attention."
+        title: "Competitor Analysis",
+        manifesto: "Identify the gaps. Exploit the weaknesses.",
+        description: "We dissect your competitive landscape to find strategic vulnerabilities. We don't just identify opportunities; we build the blueprint for you to systemically outperform them."
+      },
+      {
+        title: "Brand Messaging",
+        manifesto: "Words that connect, resonate, and convert.",
+        description: "We craft powerful, precision-engineered messaging frameworks that articulate your value proposition instantly, transforming passive observers into irrational brand advocates."
+      },
+      {
+        title: "Voice & Tone",
+        manifesto: "A personality that commands authority.",
+        description: "We build a consistent, deeply recognizable brand personality. Whether playful or deeply sophisticated, we ensure your voice cuts through the noise and builds immediate trust."
+      },
+      {
+        title: "Identity Direction",
+        manifesto: "Strategic guidance for visual dominance.",
+        description: "Aesthetics must serve strategy. We provide the comprehensive visual direction needed to ensure your design language perfectly mirrors your premium market positioning."
+      },
+      {
+        title: "Customer Experience",
+        manifesto: "Crafting meaning at every single touchpoint.",
+        description: "A brand is built on interactions. We design frictionless, deeply meaningful customer journeys that elevate perceived value and foster long-term, compounding loyalty."
+      },
+      {
+        title: "Growth Strategy",
+        manifesto: "The ultimate roadmap for long-term dominance.",
+        description: "We don't just plan for next quarter. We architect a comprehensive, multi-year strategic roadmap designed to aggressively scale your brand's market share and equity."
       }
     ]
   },
