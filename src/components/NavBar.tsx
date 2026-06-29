@@ -96,7 +96,7 @@ export function NavBar() {
           </div>
           <Link href="/contact">
             <button className="hidden md:block bg-transparent border border-[var(--color-primary-container)] text-[var(--color-primary)] font-sans text-[12px] font-bold uppercase tracking-[0.15em] py-3 px-8 hover:bg-[var(--color-primary-container)] hover:text-[var(--color-on-primary-container)] transition-all duration-300 active:scale-95">
-              BOOK A CALL
+              BOOK STRATEGY CALL
             </button>
           </Link>
           <button

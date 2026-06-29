@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Playfair_Display, Hanken_Grotesk } from "next/font/google";
 import { Providers } from "@/components/Providers";
 import { CustomCursor } from "@/components/CustomCursor";
+import { CopyProtection } from "@/components/CopyProtection";
+import { FloatingCTA } from "@/components/FloatingCTA";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -34,7 +36,9 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col bg-[var(--color-background)] text-[var(--color-on-surface)] selection:bg-[var(--color-primary-container)] selection:text-[var(--color-on-primary-container)] overflow-x-hidden md:cursor-none">
         <CustomCursor />
+        <CopyProtection />
         <Providers>{children}</Providers>
+        <FloatingCTA />
       </body>
     </html>
   );

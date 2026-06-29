@@ -137,12 +137,19 @@ const FinalCTALayer = ({ p }: any) => {
          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(212,175,55,0.15),_transparent_60%)] z-10 pointer-events-none"></div>
          <div className="w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-[#D4AF37] rounded-full blur-[150px] absolute opacity-30 animate-pulse z-10 pointer-events-none"></div>
 
-         <Link href="/contact" className="relative z-20">
-            <button className="bg-[#D4AF37] text-black font-sans text-[14px] md:text-[18px] font-bold uppercase tracking-[0.3em] px-12 md:px-16 py-6 md:py-8 rounded-full hover:bg-white hover:text-black transition-all duration-500 shadow-[0_0_80px_rgba(212,175,55,0.6)] hover:shadow-[0_0_120px_rgba(212,175,55,1)] group">
-               Book Your Strategy Session
-               <span className="inline-block ml-4 group-hover:translate-x-3 transition-transform">→</span>
-            </button>
-         </Link>
+         <div className="relative z-20 flex flex-col items-center text-center">
+            {/* Decorative Star */}
+            <div className="absolute -right-8 md:-right-20 top-[-20px] md:top-0 text-[#D4AF37] text-[20px] md:text-[24px] opacity-80 animate-pulse">★</div>
+            
+            <h2 className="font-serif text-[48px] md:text-[80px] lg:text-[100px] text-white font-bold leading-[1.1] tracking-tighter mb-10 md:mb-12">
+               Ready To Build Your <br /> Growth System?
+            </h2>
+            <Link href="/contact">
+               <button className="bg-[#D4AF37] text-black font-sans text-[14px] md:text-[16px] font-bold uppercase tracking-[0.2em] px-12 py-5 rounded-[16px] hover:bg-white transition-colors duration-300 shadow-[0_0_40px_rgba(212,175,55,0.3)]">
+                  BOOK A CALL
+               </button>
+            </Link>
+         </div>
       </motion.div>
    )
 }
@@ -317,7 +324,9 @@ const OrbitExperience = ({ p, services }: any) => {
          {/* Center Emblem */}
          <div className="absolute top-[40vh] left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center z-30">
             <div className="w-[150px] h-[150px] md:w-[250px] md:h-[250px] bg-[#D4AF37] rounded-full blur-[80px] absolute opacity-30 animate-pulse"></div>
-            <h2 className="font-serif text-[60px] md:text-[100px] text-[#D4AF37] font-bold uppercase tracking-tighter drop-shadow-[0_0_40px_rgba(212,175,55,0.4)]">Purnova</h2>
+            <h2 className="font-serif text-[32px] md:text-[48px] lg:text-[64px] max-w-[80vw] lg:max-w-4xl text-center leading-[1.1] text-[#D4AF37] font-bold drop-shadow-[0_0_40px_rgba(212,175,55,0.4)]">
+               Growth Happens When <br className="hidden md:block" /> Everything Works Together.
+            </h2>
          </div>
 
 
@@ -354,7 +363,9 @@ function MobileGalleryExperience() {
          {/* Mobile Final Experience */}
          <div className="min-h-[100vh] flex flex-col items-center justify-center text-center px-6 relative sticky bottom-0 z-20 bg-black pt-20 pb-32 shadow-[0_-30px_60px_rgba(0,0,0,1)] border-b border-white/5">
             <div className="w-[200px] h-[200px] bg-[#D4AF37] rounded-full blur-[80px] absolute opacity-20 animate-pulse"></div>
-            <h2 className="font-serif text-[56px] text-[#D4AF37] font-bold uppercase tracking-tighter mb-4 relative z-10">Purnova</h2>
+            <h2 className="font-serif text-[32px] sm:text-[40px] text-center leading-tight text-[#D4AF37] font-bold mb-4 relative z-10 px-4">
+               Growth Happens When Everything Works Together.
+            </h2>
          </div>
 
          {/* Mobile Very Final CTA */}
@@ -362,11 +373,19 @@ function MobileGalleryExperience() {
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(212,175,55,0.2),_transparent_70%)] pointer-events-none"></div>
             <div className="w-[250px] h-[250px] bg-[#D4AF37] rounded-full blur-[100px] absolute opacity-30 animate-pulse pointer-events-none"></div>
 
-            <Link href="/contact" className="relative z-10">
-               <button className="bg-[#D4AF37] text-black font-sans text-[14px] font-bold uppercase tracking-[0.2em] px-12 py-6 rounded-full shadow-[0_0_60px_rgba(212,175,55,0.5)] active:scale-95 transition-transform">
-                  Book Strategy Session
-               </button>
-            </Link>
+            <div className="relative z-20 flex flex-col items-center text-center px-4">
+               {/* Decorative Star */}
+               <div className="absolute right-0 -top-6 text-[#D4AF37] text-[20px] opacity-80 animate-pulse">★</div>
+               
+               <h2 className="font-serif text-[40px] text-white font-bold leading-[1.1] tracking-tighter mb-10">
+                  Ready To Build Your <br /> Growth System?
+               </h2>
+               <Link href="/contact">
+                  <button className="bg-[#D4AF37] text-black font-sans text-[14px] font-bold uppercase tracking-[0.2em] px-10 py-5 rounded-[16px] active:scale-95 transition-transform shadow-[0_0_40px_rgba(212,175,55,0.3)]">
+                     BOOK A CALL
+                  </button>
+               </Link>
+            </div>
          </div>
 
       </div>

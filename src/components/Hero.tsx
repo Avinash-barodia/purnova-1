@@ -37,16 +37,13 @@ export function Hero() {
             NOT FOR EVERY BRAND.
           </span>
           <p className="font-sans text-[16px] md:text-[20px] text-[var(--color-on-surface-variant)] leading-[26px] md:leading-[32px]">
-            Built exclusively for those who refuse to be ordinary. <br className="hidden md:block" />
-            Premium digital marketing for brands destined to lead.
+            Built exclusively for those who refuse to be ordinary <br className="hidden md:block" />
+            Premium digital marketing for brands destined to lead
           </p>
         </motion.div>
         <motion.div variants={item} className="flex flex-col sm:flex-row items-center justify-center gap-6">
           <Link href="/case-studies" className="inline-block w-full sm:w-auto bg-[var(--color-primary)] text-[var(--color-on-primary-fixed)] font-sans text-[12px] py-5 px-12 font-bold uppercase tracking-[0.15em] hover:bg-[var(--color-primary-fixed-dim)] transition-all duration-300 text-center">
             SEE OUR WORK
-          </Link>
-          <Link href="/contact" className="inline-block w-full sm:w-auto bg-transparent border border-[var(--color-primary)] text-[var(--color-primary)] font-sans text-[12px] py-5 px-12 font-bold uppercase tracking-[0.15em] hover:bg-[var(--color-primary)]/10 transition-all duration-300 text-center">
-            BOOK STRATEGY CALL
           </Link>
         </motion.div>
       </motion.div>

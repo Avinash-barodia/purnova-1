@@ -12,47 +12,25 @@ export function CustomCursor() {
   const [position, setPosition] = useState({ x: -100, y: -100 });
   const [isHovering, setIsHovering] = useState(false);
   
-  const trailRef = useRef<Point[]>([]);
+  // Array to hold the trail points for a smooth, continuous "snake" effect
+  const trailLength = 25;
+  const trailRef = useRef<Point[]>(Array(trailLength).fill({ x: -100, y: -100 }));
+  
   const pathRef = useRef<SVGPathElement>(null);
   const gradRef = useRef<SVGLinearGradientElement>(null);
-  const lastMoveTimeRef = useRef<number>(0);
 
   useEffect(() => {
-    let lastX = -100;
-    let lastY = -100;
+    let mouseX = -100;
+    let mouseY = -100;
 
     const handleMouseMove = (e: MouseEvent) => {
-      setPosition({ x: e.clientX, y: e.clientY });
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      setPosition({ x: mouseX, y: mouseY });
 
-      if (lastX === -100) {
-        lastX = e.clientX;
-        lastY = e.clientY;
-        return;
-      }
-
-      const dx = e.clientX - lastX;
-      const dy = e.clientY - lastY;
-      const distance = Math.sqrt(dx * dx + dy * dy);
-
-      // Interpolate positions every 3px
-      if (distance > 3) { 
-        const steps = Math.max(Math.floor(distance / 3), 1);
-        for (let i = 1; i <= steps; i++) {
-          const t = i / steps;
-          trailRef.current.push({
-            x: lastX + dx * t,
-            y: lastY + dy * t,
-          });
-        }
-        
-        // Cap buffer at 120 max points
-        if (trailRef.current.length > 120) {
-          trailRef.current = trailRef.current.slice(trailRef.current.length - 120);
-        }
-
-        lastX = e.clientX;
-        lastY = e.clientY;
-        lastMoveTimeRef.current = Date.now();
+      // On initial move, snap all points to the cursor to prevent streaking from corner
+      if (trailRef.current[0].x === -100) {
+        trailRef.current = Array(trailLength).fill({ x: mouseX, y: mouseY });
       }
     };
 
@@ -78,75 +56,73 @@ export function CustomCursor() {
     let animationFrameId: number;
 
     const render = () => {
-      const trail = trailRef.current;
-
-      // Trimming logic: tail disappears from tail end first
-      if (trail.length > 0) {
-        trail.shift(); // Remove 1 oldest point even while moving
+      if (mouseX !== -100) {
+        const trail = trailRef.current;
         
-        // If not moving recently, aggressively remove 2 more (total 3)
-        if (Date.now() - lastMoveTimeRef.current > 50) {
-           if (trail.length > 0) trail.shift();
-           if (trail.length > 0) trail.shift();
-        }
-      }
+        // The head perfectly follows the mouse
+        trail[0] = { x: mouseX, y: mouseY };
 
-      // Render the SVG Path
-      if (trail.length < 2) {
-        if (pathRef.current) pathRef.current.setAttribute("d", "");
-      } else {
+        // Each subsequent point uses a spring-like easing to follow the point ahead of it
+        // This guarantees a perfectly smooth, continuous curve regardless of mouse speed
+        for (let i = 1; i < trail.length; i++) {
+          trail[i] = {
+            x: trail[i].x + (trail[i - 1].x - trail[i].x) * 0.35,
+            y: trail[i].y + (trail[i - 1].y - trail[i].y) * 0.35,
+          };
+        }
+
         const n = trail.length;
         const lefts = [];
         const rights = [];
 
-        // Build left and right offsets for the tapered polygon
+        // Calculate normals to build a tapered polygon
         for (let i = 0; i < n; i++) {
           const p = trail[i];
           let nx = 0, ny = 0;
 
           if (i === 0) {
             const p2 = trail[1];
-            const dx = p2.x - p.x, dy = p2.y - p.y;
+            const dx = p.x - p2.x, dy = p.y - p2.y;
             const len = Math.sqrt(dx * dx + dy * dy) || 1;
             nx = -dy / len; ny = dx / len;
           } else if (i === n - 1) {
             const p0 = trail[i - 1];
-            const dx = p.x - p0.x, dy = p.y - p0.y;
+            const dx = p0.x - p.x, dy = p0.y - p.y;
             const len = Math.sqrt(dx * dx + dy * dy) || 1;
             nx = -dy / len; ny = dx / len;
           } else {
             const p0 = trail[i - 1];
             const p2 = trail[i + 1];
-            const dx = p2.x - p0.x, dy = p2.y - p0.y;
+            const dx = p0.x - p2.x, dy = p0.y - p2.y;
             const len = Math.sqrt(dx * dx + dy * dy) || 1;
             nx = -dy / len; ny = dx / len;
           }
           
-          // Smooth tapering from 0 at i=0 (tail tip) to 4 at i=n-1 (head)
-          const radius = 4 * (i / (n - 1)); 
+          // Width of the tail smoothly tapers from head (4px) to tail (0px)
+          const radius = 4 * (1 - i / (n - 1)); 
           
           lefts.push({ x: p.x + nx * radius, y: p.y + ny * radius });
           rights.push({ x: p.x - nx * radius, y: p.y - ny * radius });
         }
 
-        // Draw the precise polygon path
-        let d = `M ${lefts[n - 1].x.toFixed(2)},${lefts[n - 1].y.toFixed(2)} `;
-        for (let i = n - 2; i >= 0; i--) {
+        // Connect the calculated points to draw the SVG shape
+        let d = `M ${lefts[0].x.toFixed(2)},${lefts[0].y.toFixed(2)} `;
+        for (let i = 1; i < n; i++) {
           d += `L ${lefts[i].x.toFixed(2)},${lefts[i].y.toFixed(2)} `;
         }
-        for (let i = 1; i < n; i++) {
+        for (let i = n - 1; i >= 0; i--) {
           d += `L ${rights[i].x.toFixed(2)},${rights[i].y.toFixed(2)} `;
         }
         d += "Z";
 
         if (pathRef.current) pathRef.current.setAttribute("d", d);
 
-        // Map the gradient strictly from head to tail
+        // Adjust the gradient to strictly follow the head and tail
         if (gradRef.current) {
-          gradRef.current.setAttribute("x1", String(trail[n - 1].x));
-          gradRef.current.setAttribute("y1", String(trail[n - 1].y));
-          gradRef.current.setAttribute("x2", String(trail[0].x));
-          gradRef.current.setAttribute("y2", String(trail[0].y));
+          gradRef.current.setAttribute("x1", String(trail[0].x));
+          gradRef.current.setAttribute("y1", String(trail[0].y));
+          gradRef.current.setAttribute("x2", String(trail[n - 1].x));
+          gradRef.current.setAttribute("y2", String(trail[n - 1].y));
         }
       }
 
@@ -166,7 +142,7 @@ export function CustomCursor() {
 
   return (
     <div className="pointer-events-none fixed inset-0 z-[99999] overflow-hidden hidden md:block">
-      {/* Flawless SVG Tapered Trail rendering */}
+      {/* SVG Path for the seamless, continuous trail */}
       <svg className="absolute inset-0 w-full h-full pointer-events-none">
         <defs>
           <linearGradient id="comet-grad" ref={gradRef} gradientUnits="userSpaceOnUse">
