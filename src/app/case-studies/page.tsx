@@ -25,60 +25,6 @@ const caseStudies = [
     insight: "300%+ Social Reach Growth",
     image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAhMIWLhc8QVVBLw9nW83qwUZBWEuWcjcwagtVxNN_KOi5nPYWLdp1yMQt9Xo4aOr3musUpJjIxE2PWNS1BhAZ1srCIGTJwgeZDwia0vPmdSsujvIMkz8_R_lZL7hzgEINnVvKzlsTSjdCVszIjOCdOZTNrs62JuTRpcxzBTECopMpXQnOKFk5kbJA3xJJ8oVFKwgHmweh2jt07b_5EiiQ_ypBAp2QkgZCy_oBvqmux2jQu60Zu4O3KK8PucjAV9r9fuE2vmGCkPaw",
     href: "/case-studies/pune-voices"
-  },
-  {
-    id: "bonvie",
-    title: "Bonvie",
-    industry: "Brand Strategy",
-    summary: "Elevating a wellness brand to premium market leadership.",
-    insight: "Complete Brand Repositioning",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAyXTd7GU3Ap1hK3kudmwJ4_Ja0yqDOXh7C-8jGjJEXRHNAatvxYL7ukvOrxeUzyOxXNIJbk9n0xK3kyrhr96E2Q5ROEK0xbFAlUVMOEbM2AnTLtWBw-lpCOYEpR30H9yldy3CdJq_TGD_v4SW_YyzqPrAxLORSk_llf2It8amk1J6nDqAi-vrbBaYa8JgaNdHw7TGv68B9VfOM7JjrUcn1_1MYNZKpW10XTBKyZTqZAU7mxlFKFvlQGQNCkHZ9mlwdzar6XcY_CcU",
-    href: "#"
-  },
-  {
-    id: "second-cup",
-    title: "Second Cup Coffee",
-    industry: "Packaging Design",
-    summary: "Crafting a visual identity that tastes as good as it looks.",
-    insight: "Award-Winning Packaging",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDUrTEAUuuU77ae8a40LDvnx34A8VIv-KWVpJiyN65QWdthF_2yLyoukhey6cj5T8DGy7xDohPPYmTEzuQmEsEKFW7Q_VYYchhYtQYuChp815oem4VAeGmtTufKJ_gfTJ7R-wECl_wEvk94g-m9_7I3lzQZTGFV0944By5FcqO6C_nlpLSXshRl3KQ-jnJlqRsj8rpS8Zk7fHSpKvTlXn_EQahniVPzlWSiOX6A4MBm7tWjcg-5dwsvZd8APpVTuNKRC4hh4luYNzQ",
-    href: "#"
-  },
-  {
-    id: "flaneur",
-    title: "Flaneur",
-    industry: "Digital Growth",
-    summary: "Scaling an e-commerce fashion powerhouse.",
-    insight: "4x Revenue Growth",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBk_Nl2GGYG2Lbdw1Q6vA6TtTQw3a_vzXdbmOyAu_C3-pNYJyyGspwHCehDXemHaXY5uoBkRgOUSA1q5CRhIBSynvxQPra0uGAjyKVhjTlOK8lHZPlFXN8tec1mde6rKwaR2ajCL6JFdAXn5l5IXRRqNsiUZ5nkXpdE5SYs6tllG_GIlY5uga2RqhxP1ucKuLCz3TbDUiMLvuvfWDIlFBZc0FbTA29EcNxsNP8-QkqSi0Q2bzwe_qKzHgF4dkRQDKN4LQPodoP3ySc",
-    href: "#"
-  },
-  {
-    id: "medivora",
-    title: "Medivora",
-    industry: "Website",
-    summary: "A seamless digital experience for modern healthcare.",
-    insight: "200% Conversion Lift",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBo5aZcJIvDW4fF2qcIEfYaReckLR1OslCtia9cJ_n-DQURXtq_BMcgLoTBKZNc8rGVdiErNFIZ8p_Vmze4TQflzhsh_RGmp3xVYKNQ2bzHzit_B-2ZNwPqyuobI4WC-TuerTLmBiplrAKQ2EfqII3Eococ4dPJ9Nj_qJZpuZtDT31o84zniptJzwK2y-ZfkaQRQ_KRnP2u9ix8LdoZywHf45uDSmn-iLX1mM3XzNQzXeLgV_Y5eXaOyfcelXMkfK6oHxKVxL1SEYk",
-    href: "#"
-  },
-  {
-    id: "softbricks",
-    title: "SoftBricks Tech",
-    industry: "Content",
-    summary: "Simplifying complex software through strategic content.",
-    insight: "Enterprise Audience Growth",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBpIBbZTf9wnJR8I3IGPnv_ZJPVsctQPvirNotmP9Pyy3g8Ia27RAbWnDA-4KFZykDNp4dXL77vO3MmAvK7baojfeXpUxVQGyrXZkdvWnS9V9VjCDr6lRnMCrTx9DAjYW76aAReZBymDweTLor_ssrjLTj1cIS5K8Ysra4SxQ3A9QJAb7YZVBaV3DofQQ5tJVtG2qXiPY6ChbmC7rWA80SqRMPXmqhZKBlSHyIwV_GITeoBlFN_-RQGd65a9gWZFSOKO2P1en57hjY",
-    href: "#"
-  },
-  {
-    id: "baadshah",
-    title: "Baadshah",
-    industry: "Personal Branding",
-    summary: "Establishing executive presence and thought leadership.",
-    insight: "Industry Authority Built",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCGO59det4Y0H1_Dm-TehOZralzlG5OMAcRJ2p3tnrHhtNB3C8xkwVSa8cndWKNFr0kqngxRpsveaEn6qYE4QYREi3xKDJiN4JXIUnhrUh3sxxVBcW0Np6sL-aWq_7WkK2yhyM05-eWpVEB6Qs9kEqbRukdpDNM7wT50LvSpKVENnPB5uiLFqlUxW7RC0mS_yw9r0ZNspzgRPA3LrrN-8WjwcZ3ICV3OBXKeNA9g5Xx3Efydmr_jl6mIwnm2U1O9GNsgKiOkhxgEm4",
-    href: "#"
   }
 ];
 
